@@ -5,10 +5,6 @@ function App() {
 
   return (
     <>
-    <div>
-      <h1 style={{'font-size':'30px'}}>Smart Tasker</h1>
-      <p>Welcome to schedule the tasks</p>
-      </div>
     <div className = "mainroot">
       
       <div>
