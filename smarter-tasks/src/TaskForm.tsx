@@ -59,7 +59,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
           <label htmlFor="todoDescription">Description:</label>
           <input type="text" id="todoDescription" value={this.state.description} onChange={this.descriptionChanged} />
           </div>
-          <button type="submit">Add item</button>
+          <button type="submit" id ="addTaskButton">Add item</button>
         </form>
       )
   }
