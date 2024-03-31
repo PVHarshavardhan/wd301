@@ -1,23 +1,42 @@
-import React from "react";
 import Task from "./Task";
 import { TaskItem } from "./types";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+
+interface TaskAppState {
+  tasks: TaskItem[];
+}
 interface Props {
   tasks: TaskItem[];
 }
 
-interface State {}
-class TaskList extends React.Component<Props, State> {
-  
-  render() {
-    return this.props.tasks.map((task, idx) => (
-      <div>
-      <Task key={idx}
-            title={task.title} 
-            dueDate={task.dueDate} 
-            description = {task.description} />
-      </div>
-    ));
+
+const TaskList = (props: Props) => {
+  const [taskAppState, setTaskAppState] = useLocalStorage<TaskAppState>("tasks", {
+    tasks: [],
+  });
+  const deleteTask =(idx:number) => {
+    console.log(taskAppState);
+    props.tasks.forEach((_item, index) => {
+      if (index === idx) {
+        props.tasks.splice(index, 1);
+      }
+      setTaskAppState({ tasks: props.tasks});
+
+    })
+
   }
-  
-}
+  const list = props.tasks.map((task, idx) => (
+    <li>
+    <Task
+      key={idx}
+      title={task.title}
+      description={task.description}
+      dueDate={task.dueDate}
+      idx = {idx}
+      deleteTask={deleteTask}
+    />
+    </li>
+  ));
+  return <><ul>{list}</ul></>;
+};
 export default TaskList;
