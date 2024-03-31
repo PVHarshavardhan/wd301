@@ -16,13 +16,11 @@ const TaskList = (props: Props) => {
   });
   const deleteTask =(idx:number) => {
     console.log(taskAppState);
-    props.tasks.forEach((_item, index) => {
-      if (index === idx) {
-        props.tasks.splice(index, 1);
-      }
+    
+        props.tasks.splice(idx, 1);
+      
       setTaskAppState({ tasks: props.tasks});
 
-    })
 
   }
   const list = props.tasks.map((task, idx) => (
