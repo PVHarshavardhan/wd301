@@ -14,27 +14,28 @@ const TaskList = (props: Props) => {
   const [taskAppState, setTaskAppState] = useLocalStorage<TaskAppState>("tasks", {
     tasks: [],
   });
-  const deleteTask =(idx:number) => {
-    console.log(taskAppState);
-    
-        props.tasks.splice(idx, 1);
-      
-      setTaskAppState({ tasks: props.tasks});
-
-
+  const deleteTask=(id:string)=>{
+    console.log(taskAppState)
+    props.tasks.forEach((_item, index) => {
+      if (_item.id === id) {
+        props.tasks.splice(index, 1);
+      }
+      setTaskAppState({ tasks: props.tasks });
+    });
   }
   const list = props.tasks.map((task, idx) => (
     <li>
     <Task
       key={idx}
+      id={task.id}
       title={task.title}
       description={task.description}
       dueDate={task.dueDate}
-      idx = {idx}
       deleteTask={deleteTask}
     />
     </li>
   ));
   return <><ul>{list}</ul></>;
 };
+
 export default TaskList;

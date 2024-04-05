@@ -1,22 +1,25 @@
 import "./TaskCard.css";
+
 interface TaskProps {
-  idx:number;
+  id:string;
   title: string;
   dueDate: string;
   description:string;
-  deleteTask:(idx:number) => void;
+  deleteTask:(id:string) => void;
 }
 
 const Task = (props: TaskProps) => {
   const deleteTask = () => {
-    props.deleteTask(props.idx);
+    props.deleteTask(props.id);
   }
   
   return (
     <div className="TaskItem shadow-md border border-slate-100">
       <div style={{display: "flex"}}>
         <div>
+      <a href={`/tasks/${props.id || ""}`}>
       <h2 className="text-base font-bold my-1">{props.title}</h2>
+      </a>
       <p className="text-sm text-slate-500">DueDate: {props.dueDate}</p>
       <p className="text-sm text-slate-500">Description: {props.description}</p>
         </div>
