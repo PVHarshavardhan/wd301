@@ -5,7 +5,7 @@ import Signup from "../pages/signup"
 import Logout from "../pages/logout"
 
 import AccountLayout from "../layouts/account"
-import ProtectedRoute from "./ProtectedRoute"
+import ProtectedRoute from "./ProtectedRoutes"
 import Projects from "../pages/projects"
 import Members from "../pages/members"
 
