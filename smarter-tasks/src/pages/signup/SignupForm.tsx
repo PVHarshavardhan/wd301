@@ -25,9 +25,11 @@ const SignupForm: React.FC = () => {
       console.log('Sign-up successful');
       // Dialogue: After successful signup we have to redirect the user to the secured page. We will do that later.
       const data = await response.json();
+      // console.log(data.token)
+      // console.log(JSON.stringify(data.user))
       localStorage.setItem('authToken',data.token)
       localStorage.setItem('userData', JSON.stringify(data.user))
-      navigate("/dashboard")
+      navigate("/account")
     } catch (error) {
       console.error('Sign-up failed:', error);
     }
