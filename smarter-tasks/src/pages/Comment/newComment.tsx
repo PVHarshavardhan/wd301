@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useCommentDispatch } from "../../context/comment/context";
-import { addComments, fetchComments } from "../../context/comment/action";
+import { addComments, fetchComments } from "../../context/comment/actions";
 
 const NewComment = () => {
   const [, setIsOpen] = useState(true);
