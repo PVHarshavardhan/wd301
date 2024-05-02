@@ -1,9 +1,13 @@
-import React,{forwardRef } from "react";
+import React from "react";
+
 import { TaskDetails } from "../../context/task/types";
-import { Link, useParams } from "react-router-dom";
+// import "./TaskCard.css";
+import { Link } from "react-router-dom";
 import { Draggable } from "react-beautiful-dnd";
-import { useTasksDispatch } from "../../context/task/context";
+import  { forwardRef } from "react";
 import { deleteTask } from "../../context/task/actions";
+import { useParams } from "react-router-dom";
+import { useTasksDispatch } from "../../context/task/context";
 
 const Task = forwardRef<
   HTMLDivElement,
@@ -14,16 +18,6 @@ const Task = forwardRef<
   const { task } = props;
   return (
     <div ref={ref} {...props} className="m-2 flex">
-      <div>
-        <h2 className="text-base font-bold my-1">{task.title}</h2>
-        <p className="text-sm text-slate-500">
-          {new Date(task.dueDate).toDateString()}
-        </p>
-        <p className="text-sm text-slate-500">Description: {task.description}</p>
-        <p className="text-sm text-slate-500">
-          Assignee: {task.assignedUserName ?? "-"}
-        </p>
-      </div>
       <Link
         className="TaskItem w-full shadow-md border border-slate-100 bg-white"
         to={`tasks/${task.id}`}
@@ -36,6 +30,9 @@ const Task = forwardRef<
             </p>
             <p className="text-sm text-slate-500">
               Description: {task.description}
+            </p>
+            <p className="text-sm text-slate-500">
+              Assignee: {task.assignedUserName ?? "-"}
             </p>
           </div>
           <button
@@ -65,8 +62,6 @@ const Task = forwardRef<
     </div>
   );
 });
-   
- 
 
 const Container = (
     props: React.PropsWithChildren<{
